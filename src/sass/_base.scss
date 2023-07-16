@@ -1,0 +1,70 @@
+//Font-Color-Variables
+$color-brown-light:#c69963;
+$color-brown-med:#B28451;
+$color-brown-dark:#54483A;
+$color-brown-dark-2:#6D5D4B;
+$color-blue-dark:#101d2c;
+$color-white:#f9f7f6;
+$color-grey:#aaa;
+$color-grey-light: rgb(237, 237, 237);
+
+
+//Font-Variables
+$font-primary:'Nunito', sans-serif;
+$font-display:'Josefin Sans', sans-serif;
+
+//Responsive Breakpoints
+$bp-largest: 75em; //1200px
+$bp-large:62.5em; //100/16=62.5
+$bp-medium: 50em; //800/16=50em
+$bp-medium-small: 35em;
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    @media only screen and (max-width:$bp-largest) {
+        font-size: 50%;
+    }
+
+}
+
+body{
+    font-family: $font-primary;
+    color: $color-brown-med;
+    font-weight: bold;
+    line-height: 1.6;
+    font-size: larger;
+}
+
+.container{
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [content-start] 
+    repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [content-end] minmax(6rem, 1fr) [full-end];
+    
+    @media only screen and (max-width:$bp-large) {
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [content-start] 
+    repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [content-end] minmax(6rem, 1fr) [full-end];
+    }
+
+    @media only screen and (max-width:$bp-medium) {
+        grid-template-rows: 6rem calc(100vh - 6rem);
+        }
+
+    /* first side bar is 8 rem fixed, 
+    full start , 
+    dummy row is created for full bleed object that cover full screen. min width 6rem and max 1fr
+    content is divided into 8 columns so columns min width will be min-content, and max width 14rem,
+    one more dummy row for full bleed object that cover full screen. min width 6rem and max 1fr
+    */
+    //named the columns and used '12 grid layout' which is used in industry
+    //https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp
+}
